@@ -5,11 +5,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+    text-align: center;
+  }
+
 .monitor{
     border: 2px solid steelblue;
     padding: 1rem 0;
     margin-bottom: 0.6rem;
     border-radius: 10px;
+    min-height: 3rem;
 }
 
 .operation{

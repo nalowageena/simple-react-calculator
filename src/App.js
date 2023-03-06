@@ -1,4 +1,3 @@
-import './App.css';
 import Monitor from './components/Monitor'
 import Buttons from './components/Buttons'
 
