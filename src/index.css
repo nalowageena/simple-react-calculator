@@ -37,9 +37,15 @@ body {
     border-radius: 10px;
 }
 
+.different{
+    grid-column: 3/ span 3;
+    color: white;
+    background-color: steelblue;
+}
+
 .buttons{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     gap: 0.2rem;
     min-width: 6rem;
     min-height: 10rem;
