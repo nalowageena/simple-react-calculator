@@ -3,36 +3,38 @@ import Buttons from "./components/Buttons";
 import { useState } from "react";
 
 function App() {
-    const [currentValue, setCurrentValue] = useState(0);
-    const [currentOperator, setCurrentOperator] = useState("");
+    const [currentValue, setCurrentValue] = useState("");
+    const [operator, setOperator] = useState("");
     const [result, setResult] = useState(0);
 
     const clearOne = () => {};
     const clearAll = () => {
         setResult(0);
-        setCurrentOperator("");
-        setCurrentValue(0);
+        setOperator("");
+        setCurrentValue("");
     };
+
     const handleOperand = (operand) => {
-        setCurrentValue(operand);
+        setCurrentValue(currentValue + operand);
     };
     const handleOperator = (operator) => {
-        setCurrentOperator(operator);
-        setResult(currentValue);
+        setOperator(operator);
+        setResult(parseFloat(currentValue));
+        setCurrentValue("");
     };
     const doCalculation = () => {
-        console.log(currentOperator);
-        if (currentOperator === "+") {
-            setResult(result + currentValue);
+        console.log(operator);
+        if (operator === "+") {
+            setResult(result + parseFloat(currentValue));
         }
-        if (currentOperator === "-") {
-            setResult(result - currentValue);
+        if (operator === "-") {
+            setResult(result - parseFloat(currentValue));
         }
-        if (currentOperator === "x") {
-            setResult(result * currentValue);
+        if (operator === "x") {
+            setResult(result * parseFloat(currentValue));
         }
-        if (currentOperator === "/") {
-            setResult(result / currentValue);
+        if (operator === "/") {
+            setResult(result / parseFloat(currentValue));
         }
     };
 
