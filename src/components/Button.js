@@ -1,10 +1,9 @@
 import React from 'react'
 
-const Button = ({value, updateOperation}) => {
+const Button = ({value, handleTask}) => {
 
   return (
-    <div className={value==='='? 'button different': 'button'} onClick={()=>
-        updateOperation(value)}>
+    <div className={value==='='? 'button different': 'button'} onClick = {()=> handleTask(value)}>
         <p>{value}</p>
     </div>
   )
