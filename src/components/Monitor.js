@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Monitor = () => {
+const Monitor = ({result,operation}) => {
   return (
     <div className='monitor'>
-        <div className="operation" ></div>
-        <div className="answer"></div>
+        <div className="operation">{operation}</div>
+        <div className="answer">{result}</div>
     </div>
   )
 }
