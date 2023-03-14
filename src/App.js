@@ -1,9 +1,10 @@
 import Monitor from "./components/Monitor";
 import Buttons from "./components/Buttons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
     const [currentValue, setCurrentValue] = useState("");
+    const [previousValue, setPreviousValue] = useState("");
     const [operator, setOperator] = useState("");
     const [result, setResult] = useState(0);
 
@@ -12,6 +13,7 @@ function App() {
         setResult(0);
         setOperator("");
         setCurrentValue("");
+        setPreviousValue("");
     };
 
     const handleOperand = (operand) => {
@@ -19,23 +21,38 @@ function App() {
     };
     const handleOperator = (operator) => {
         setOperator(operator);
-        setResult(parseFloat(currentValue));
-        setCurrentValue("");
+        currentValue?setPreviousValue(currentValue): setPreviousValue(result); //here
+        setCurrentValue("0");
     };
+
+    // Condition based with "clean up"
+    useEffect(() => {
+        console.log(`previousValue: ${previousValue}`);
+        console.log(`currentValue: ${currentValue}`);
+        console.log(`result: ${result}`);
+    }, [result, currentValue, previousValue]);
+
     const doCalculation = () => {
-        console.log(operator);
+        if (operator === "") {
+            setResult(parseFloat(currentValue));
+        }
         if (operator === "+") {
-            setResult(result + parseFloat(currentValue));
+            setResult(parseFloat(previousValue) + parseFloat(currentValue));
         }
         if (operator === "-") {
-            setResult(result - parseFloat(currentValue));
+            setResult(parseFloat(previousValue) - parseFloat(currentValue));
         }
         if (operator === "x") {
-            setResult(result * parseFloat(currentValue));
+            setResult(parseFloat(previousValue) * parseFloat(currentValue));
         }
         if (operator === "/") {
-            setResult(result / parseFloat(currentValue));
+            setResult(parseFloat(previousValue) / parseFloat(currentValue));
         }
+
+        // setCurrentValue(result.toString())
+
+        setCurrentValue("");
+        setPreviousValue("");
     };
 
     // const updateOperation = (expression) => {
