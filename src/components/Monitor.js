@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Monitor = ({result,operation}) => {
+const Monitor = ({result}) => {
   return (
     <div className='monitor'>
-        <div className="operation">{operation}</div>
+        <div className="operation"></div>
         <div className="answer">{result}</div>
     </div>
   )
